@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rhythm Box</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- <div id="main"> -->
+
+        <h1>🎵Rhythm Box🎵</h1>
+    
+        <!-- basic button -->
+         <div class="btn-div">
+             <button class="btn display-btn">Display Playlist</button>
+             <button class="btn remove-btn">Delete song</button>
+         </div>
+         <div class="btn-div">
+             <button class="btn add-start-btn">Add song at beginning</button>
+             <button class="btn add-end-btn">Add song at last</button>
+         </div>
+
+        <!-- Playing current song -->
+        <div class="curr-card">
+            <img src="https://images.unsplash.com/photo-1761777939781-2fb1b636d5fc?ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;q=80&amp;w=685" alt="Shape of You" class="song-img">
+            <div class="content">
+                <div class="music-player">
+                    <div class="player-control">
+                        <button class="play-btn"><img src="./assets/player_icon1.png" class="player-control-icon"></button>
+                        <button class="play-btn previous-song"><img src="./assets/player_icon2.png" class="player-control-icon"></button>
+                        <button class="play-btn current-song"><img src="./assets/player_icon3.png" class="player-control-icon" style="width: 1.5rem; height: 1.5rem;"></button>
+                        <button class="play-btn next-song"><img src="./assets/player_icon4.png" class="player-control-icon"></button>
+                        <button class="play-btn fav-song"><img src="./assets/player_icon5.png" class="player-control-icon"></button>      
+                    </div>
+                    <div class="playback-bar">
+                        <span class="current-time">00:00</span>
+                        <input type="range" min="0" max="100" class="progress-bar" step="10">
+                        <span class="song-duration">04:24</span>
+                    </div>
+                </div>
+                <h3 class="song-title">Shape of You</h3>
+                <p class="song-artist">Ed Sheeran</p>
+            </div>
+        </div>
+
+        <button class="btn restart-btn">Restart the Playlist!</button>
+    
+        <!-- form for adding song -->
+        <form class="add-form">
+            <h2>Form for adding a song!🎶</h2>
+            <label for="img" required>Image URL</label> <br>
+            <input type="text" name="img" id="img" placeholder="Enter the url of image" > <br> <br>
+    
+            <label for="title">Song title</label> <br>
+            <input type="text" name="title" id="title" placeholder="Enter the title of song" required> <br> <br>
+        
+            <label for="artist">Artist name</label> <br>
+            <input type="text" name="artist" id="artist" placeholder="Enter the name of artist" required> <br> <br>
+        
+            <label for="duration">Duration</label> <br>
+            <input type="text" name="duration" id="duration" placeholder="Enter the duration of song" required> <br> <br>
+        
+            <button class="btn btn-form add-form-submit">SUBMIT</button>
+        </form>
+        
+        <!-- form for removing song -->
+        <form class="del-form">  
+            <h2>Form for deleting a song!🗑️</h2>
+            <label for="title">Song title</label> <br>
+            <input type="text" name="title" id="title" placeholder="Enter the title of song"> <br> <br>
+            
+                <label for="duration">Duration</label> <br>
+                <input type="text" name="duration" id="duration" placeholder="Enter the duration of song" required> <br> <br>
+            
+            <button class="btn btn-form del-form-submit">SUBMIT</button>
+        </form>
+
+
+    <!-- </div>     -->
+
+
+    <script src="helper.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
