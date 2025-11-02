@@ -107,10 +107,19 @@ const favButton = document.querySelector(".fav-song");
 favButton.addEventListener("click", ()=>{
     const contentDiv = document.querySelector(".curr-card");
 
+    const title = contentDiv.querySelector(".song-title").textContent;
+    const artist = contentDiv.querySelector(".song-artist").textContent;
+    const duration = contentDiv.querySelector(".song-duration").textContent;
+
+    //Access the clicked icon and change it according to if else condition
     const favIdx = findSongInFav(title, artist, duration);
+    let favBtn = document.querySelector(".fav");
+
     if(favIdx === -1){
+        favBtn.src = "./assets/like.png";
         addtoFavourite(contentDiv);
     } else{
+        favBtn.src = "./assets/dislike.png";
         removeFromFavourite(contentDiv);
     }
 })

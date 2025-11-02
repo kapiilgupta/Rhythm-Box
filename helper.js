@@ -217,12 +217,11 @@ function addtoFavourite(currSong){
     const title = currSong.querySelector(".song-title").textContent;
     const artist = currSong.querySelector(".song-artist").textContent;
     const duration = currSong.querySelector(".song-duration").textContent;
-
+    
     const obj = new Song(img, title, artist, duration);
     favSong.push(obj);
     localStorage.setItem('favSong', JSON.stringify(favSong));
-    alert("🎶 Song added to favourites.\n");
-
+    alert("🎶 Song added to favourites.\n");  
 } 
 
 //Function to remove song from favourites.
@@ -238,4 +237,4 @@ function removeFromFavourite(currSong){
         localStorage.setItem('favSong', JSON.stringify(favSong));
         alert("🎶Song removed from favourites!");
     }
-} 
+}
