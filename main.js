@@ -72,10 +72,10 @@ delButtonForm.addEventListener("click", (evt)=>{
 let playCurrent = document.querySelector(".current-song");
 playCurrent.addEventListener("click",()=>{
     const contentDiv = document.querySelector('.curr-card');
-
+    
     const currTitle = contentDiv.querySelector('.song-title').textContent;
     const currArtist = contentDiv.querySelector('.song-artist').textContent;
-
+    
     alert("🎶 Now playing: " + currTitle + " by " +  currArtist + "!");
 })
 
@@ -91,7 +91,6 @@ prevButton.addEventListener('click', () => {
 //access the ".next-song" button and add event listener on it to play the next song
 const nextButton = document.querySelector('.next-song');
 nextButton.addEventListener('click', () => {
-    // Select the container div 'content'
     const contentDiv = document.querySelector('.curr-card');
     btn = "next";
     playSong(contentDiv,btn)
@@ -107,5 +106,11 @@ restart.addEventListener("click", ()=>{
 const favButton = document.querySelector(".fav-song");
 favButton.addEventListener("click", ()=>{
     const contentDiv = document.querySelector(".curr-card");
-    addtoFavourite(contentDiv);
+
+    const favIdx = findSongInFav(title, artist, duration);
+    if(favIdx === -1){
+        addtoFavourite(contentDiv);
+    } else{
+        removeFromFavourite(contentDiv);
+    }
 })

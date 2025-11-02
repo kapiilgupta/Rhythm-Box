@@ -1,6 +1,18 @@
 let playList= [];
 let favSong= [];
 
+//Store the data of favSong on local storage
+let storedFavSong  = localStorage.getItem("favSong");
+if(storedFavSong && storedFavSong !== ""){
+    try{
+        favSong = JSON.parse(storedFavSong);
+    } catch(err){
+        console.error("Error parsing favSong from localStorage:", err);
+        favSong = [];
+    }
+} else{
+    localStorage.setItem('favSong', JSON.stringify(favSong));
+}
 
 
 //Store the data of playlist on localStorage
@@ -149,7 +161,6 @@ function playSong(contentDiv, str){
     
     //find that song exist or not or if exist get the index
     let ans = findSong(songImg, songTitle.textContent, songArtist.textContent, songDuration.textContent);
-    console.log(ans);
     
     //update the index according to str value (previous, next)
     if(str == "previous"){
@@ -200,20 +211,31 @@ function findSongInFav(title, artist, duration){
     return -1;
 }
 
-//Function to add song at end.
+//Function to add song to favourites
 function addtoFavourite(currSong){
-    console.log(currSong);
-    let {img, title, artist, duration} = currSong;
-    let findIdx = findSongInFav(title, artist, duration);    
-    
-    if(findIdx != -1){
-        alert("Song already present in favourites!");
-        // const existingSong = playList.splice(findIdx, 1)[0];
-        // favSong.push(existingSong);
-    } else{
-        const obj = new Song(img, title, artist, duration);
-        favSong.push(obj);
-    }
-    // localStorage.setItem('favSong', JSON.stringify(favSong));
+    const img = currSong.querySelector(".song-img").src;
+    const title = currSong.querySelector(".song-title").textContent;
+    const artist = currSong.querySelector(".song-artist").textContent;
+    const duration = currSong.querySelector(".song-duration").textContent;
+
+    const obj = new Song(img, title, artist, duration);
+    favSong.push(obj);
+    localStorage.setItem('favSong', JSON.stringify(favSong));
     alert("🎶 Song added to favourites.\n");
+
+} 
+
+//Function to remove song from favourites.
+function removeFromFavourite(currSong){
+    const img = currSong.querySelector(".song-img").src;
+    const title = currSong.querySelector(".song-title").textContent;
+    const artist = currSong.querySelector(".song-artist").textContent;
+    const duration = currSong.querySelector(".song-duration").textContent;
+
+    let findIdx = findSongInFav(title, artist, duration);    
+    if(findIdx != -1){
+        favSong.splice(findIdx, 1);
+        localStorage.setItem('favSong', JSON.stringify(favSong));
+        alert("🎶Song removed from favourites!");
+    }
 } 
