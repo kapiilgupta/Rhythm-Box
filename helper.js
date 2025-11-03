@@ -238,3 +238,8 @@ function removeFromFavourite(currSong){
         alert("🎶Song removed from favourites!");
     }
 }
+
+//Function to display the favourites song.
+function displayFav(){
+    
+}
